@@ -5,3 +5,6 @@ from django.shortcuts import render
 def kincounty_project(request):
     #render(request,'/kingcounty/index.html')
     return render(request,'kingcounty/index.html')
+
+def home(request):
+    return render(request, 'kingcounty/index.html')
