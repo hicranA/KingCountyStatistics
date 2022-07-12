@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import folium
 
+
 # Create your views here.
 def kincounty_project(request):
     #render(request,'/kingcounty/index.html')
