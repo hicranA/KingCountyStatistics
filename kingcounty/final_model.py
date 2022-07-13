@@ -8,33 +8,38 @@ from folium.plugins import HeatMap
 ################################  LOAD CSV FILE ############
 # load csv file and save as a df 
 df = pd.read_csv('/home/harnold/github/KingCountyStatistics//kingcounty/current_geo.csv')
-print(df.head())
+df_1= df.groupby(["city","block_address","geocoded_column"]).size().reset_index()
+df_1.rename(columns = {0:'count'}, inplace = True)
+print(df_1.loc[df_1["city"]=="ISSAQUAH"])
 ##############################
 
-# count cases in the data frame 
-final_map_model =   pd.DataFrame()
-count_of_incidents = df["geocoded_column"].value_counts()
-new_df = count_of_incidents.to_frame(name="count")
-new_df.reset_index(inplace=True)
-new_df.rename(columns={'index':'geocode'}, inplace = True)
-print(new_df)
+
 # how to split the gecode column
-new_df["geocode"]= new_df["geocode"].astype(str)
-new_df[['geocode', 'B', 'C']] = new_df['geocode'].str.split(':', 2, expand=True)
-new_df['C'].str.replace('}',"")
-new_df['C'] =new_df['C'].str.replace('}',"")
-new_df['C'] =new_df['C'].str.replace(']',"")
-new_df['C'] =new_df['C'].str.replace('[',"")
-k = new_df['C'].str.split(',', 1, expand=True)
-new_df['latitude']= k[0].astype(float)
-new_df['longitude']= k[1].astype(float)
-final_map_model['latitude']= new_df['latitude']
-final_map_model['longitude']=new_df['longitude']
-final_map_model['count']=new_df['count']
-final_model_max = final_map_model["count"].max()
-final_map_model["count_normal"]= final_map_model["count"]/final_model_max
+df_1["geocoded_column"]= df_1["geocoded_column"].astype(str)
+df_1[['geocoded_column', 'B', 'C']] = df_1['geocoded_column'].str.split(':', 2, expand=True)
+df_1['C'] =df_1['C'].str.replace('}',"")
+df_1['C'] =df_1['C'].str.replace(']',"")
+df_1['C'] =df_1['C'].str.replace('[',"")
+k = df_1['C'].str.split(',', 1, expand=True)
+df_1['latitude']= k[0].astype(float)
+df_1['longitude']= k[1].astype(float)
 
+columns = ['geocoded_column', 'B', 'C']
+df_1.drop(columns, inplace=True, axis=1)
 
+""" df_1[['geocoded_column', 'B', 'C']] = df_1['geocoded_column'].str.split(':', 2, expand=True)
+df_1['C'].str.replace('}',"")
+df_1['C'] =df_1['C'].str.replace('}',"")
+df_1['C'] =df_1['C'].str.replace(']',"")
+df_1['C'] =df_1['C'].str.replace('[',"")
+k = df_1['C'].str.split(',', 1, expand=True)
+df_1['latitude']= k[0].astype(float)
+df_1['longitude']= k[1].astype(float)
+final_model_max = df_1["count"].max()
+df_1["count_normal"]= df_1["count"]/final_model_max """
+print(df_1.columns)
+
+""" 
 
 ############# create map ##################
 x =   pd.DataFrame() 
@@ -48,7 +53,7 @@ mylist = my_array.tolist()
 # that has any NaN values
 indexList = [np.any(i) for i in np.isnan(mylist)]
 # delete all the rows with any NaN value
-arr = np.delete(mylist, indexList, axis=0)
+arr = np.delete(mylist, indexList, axis=0) """
 
 
 """ # Get boolean index list of rows with True values for the rows
