@@ -17,28 +17,22 @@ print(df_1.loc[df_1["city"]=="ISSAQUAH"])
 # how to split the gecode column
 df_1["geocoded_column"]= df_1["geocoded_column"].astype(str)
 df_1[['geocoded_column', 'B', 'C']] = df_1['geocoded_column'].str.split(':', 2, expand=True)
-df_1['C'] =df_1['C'].str.replace('}',"")
-df_1['C'] =df_1['C'].str.replace(']',"")
-df_1['C'] =df_1['C'].str.replace('[',"")
-k = df_1['C'].str.split(',', 1, expand=True)
-df_1['latitude']= k[0].astype(float)
-df_1['longitude']= k[1].astype(float)
-
-columns = ['geocoded_column', 'B', 'C']
-df_1.drop(columns, inplace=True, axis=1)
-
-""" df_1[['geocoded_column', 'B', 'C']] = df_1['geocoded_column'].str.split(':', 2, expand=True)
-df_1['C'].str.replace('}',"")
-df_1['C'] =df_1['C'].str.replace('}',"")
-df_1['C'] =df_1['C'].str.replace(']',"")
-df_1['C'] =df_1['C'].str.replace('[',"")
+df_1['C'] =df_1['C'].str.replace('}',"",  regex=True)
+df_1['C'] =df_1['C'].str.replace(']',"",  regex=True)
+df_1['C'] =df_1['C'].str.replace('[',"",  regex=True)
 k = df_1['C'].str.split(',', 1, expand=True)
 df_1['latitude']= k[0].astype(float)
 df_1['longitude']= k[1].astype(float)
 final_model_max = df_1["count"].max()
-df_1["count_normal"]= df_1["count"]/final_model_max """
-print(df_1.columns)
+df_1["count_normal"]= df_1["count"]/final_model_max
+columns = ['geocoded_column', 'B', 'C']
+df_1.drop(columns, inplace=True, axis=1)
+print(df_1.loc[df_1["city"]=="ISSAQUAH"])
 
+print(df_1.loc[df_1.latitude.isnull()==True].index.values.astype(int))
+
+df_1= df_1.drop(df_1.loc[df_1.latitude.isnull()==True].index.values.astype(int))
+print(df_1.loc[df_1.latitude.isnull()==True].index.values.astype(int))
 """ 
 
 ############# create map ##################

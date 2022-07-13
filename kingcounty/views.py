@@ -4,7 +4,8 @@ from django.shortcuts import render
 from .models import Data
 import folium
 from folium import plugins
-
+#from kingcounty.final_model import df_1
+#from django.views.generic import ListView
 
 
 # Create your views here.
@@ -27,3 +28,18 @@ def home(request):
 
 def map(request):
     return render(request, 'kingcounty/map.html')
+
+""" def bulkInsert(ListView):
+    row_iter = df_1.iterrows()
+    objs = [
+        Data(
+        city =row['city'],
+        street_block = row['block_address'],
+        crime_count = row['count'],
+        crime_count_normalized = row['count_normal'],
+        latitude = row['latitude'],
+        longitude = row['longitude'],
+        )
+        for index, row in row_iter
+    ]
+    Data.objects.bulk_create(objs) """
