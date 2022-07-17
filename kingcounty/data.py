@@ -72,16 +72,16 @@ for row in range(len(results_df)):
   
 results_df["lat"]= lat
 results_df["lot"]= lot    
-#results_df.to_csv("summary.csv", index=False)
+results_df.to_csv("summary.csv", index=False)
 #results_df.to_csv("summary.csv", index=False)
 #("latitude", "longitude", "crime_count_normalized")
-x =   pd.DataFrame() 
+""" x =   pd.DataFrame() 
 x = results_df[["lat","lot","count_normal" ]]
 x["lat"]= x['lat'].astype(float)
 x["lot"]= x['lot'].astype(float)
 x["count_normal"]= x['count_normal'].astype(float)
 my_array =x.to_numpy()
-mylist = my_array.tolist()
+mylist = my_array.tolist() """
 
 
 """ 
