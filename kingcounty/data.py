@@ -37,7 +37,7 @@ select
     city,
     count(ID)
 where
-    incident_datetime  between '2022-01-01T00:00:00' and '2022-12-31T23:00:00'
+    incident_datetime  between '2022-01-01T00:00:00' and '2022-12-31T23:00:00' and reporting_area != 'Out of Jurisdiction'
 group by
     city
 """
@@ -47,7 +47,7 @@ results_df['count_ID']= results_df["count_ID"].astype(float)
 final_model_max = results_df["count_ID"].max()
 results_df["count_normal"]= results_df["count_ID"]/final_model_max
 print("size",len(results_df))
-#results_df.to_csv("summary.csv", index=False)
+
 
 ##########
 
@@ -73,7 +73,7 @@ for row in range(len(results_df)):
 results_df["lat"]= lat
 results_df["lot"]= lot    
 #results_df.to_csv("summary.csv", index=False)
-
+#results_df.to_csv("summary.csv", index=False)
 #("latitude", "longitude", "crime_count_normalized")
 x =   pd.DataFrame() 
 x = results_df[["lat","lot","count_normal" ]]
@@ -82,6 +82,7 @@ x["lot"]= x['lot'].astype(float)
 x["count_normal"]= x['count_normal'].astype(float)
 my_array =x.to_numpy()
 mylist = my_array.tolist()
+
 
 """ 
 ######################### DONWLOAD 2022 DATA TO CSV ########################
