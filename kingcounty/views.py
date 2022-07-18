@@ -35,7 +35,7 @@ def home(request):
     #data_list = Data.objects.values_list("latitude", "longitude", "crime_count_normalized")
     #for data in data:
     #    print(data_list)
-    m= folium.Map(location=[47.608013,-122.335167],zoom_start=9)
+    m= folium.Map(location=[47.6062,-122.335167],zoom_start=9)
     
     # add marker one by one on the map
     for i in range(0,len(results_df)):
