@@ -1,6 +1,7 @@
 from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render
+
 from numpy import save
 from .models import Data
 import folium
@@ -58,7 +59,7 @@ def home(request):
     return render(request, 'kingcounty/base.html',context)
 
 def map(request):
-    return render(request, 'kingcounty/map.html')
+    return render(request, 'kingcounty/map.html')  
 
 """ def BulkInsert(ListView):
     row_iter = results_df.iterrows()  

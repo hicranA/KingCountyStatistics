@@ -4,7 +4,7 @@
 #  prefered using sodapy socrata instead of request library because this what king county used 
 from sodapy import Socrata 
 # dotenv libray to hide personal info
-from dotenv import load_dotenv 
+
 # os library to reach the variable
 import os
 # pandas to save as data frame
@@ -15,14 +15,6 @@ from geopy.geocoders import Nominatim
 # URL to king county api
 url = "data.kingcounty.gov"
  
-#load_dotenv() will load the variabled that we entered
-load_dotenv()
-
-# get this variable
-USER_NAME =os.getenv("USER_NAME")
-PASSWORD =os.getenv("PASSWORD")
-API_KEY = os.getenv("API_KEY")
-
 
 # log in to the api using these variables 
 client = Socrata(url, API_KEY,
