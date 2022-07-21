@@ -19,7 +19,7 @@ def kincounty_project(request):
 
 def home(request):
     x =  pd.DataFrame()
-    results_df = pd.read_csv('/home/harnold/github/KingCountyStatistics/kingcounty/summary.csv')
+    results_df = pd.read_csv('./kingcounty/summary.csv')
     x = results_df[["lat","lot","count_normal" ]]
     x["lat"]= x['lat'].astype(float)
     x["lot"]= x['lot'].astype(float)
