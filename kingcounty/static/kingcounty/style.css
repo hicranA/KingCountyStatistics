@@ -1,0 +1,22 @@
+/* Set the size of the div element that contains the map */
+/***** style footer******************/
+
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.df{
+  height: 30%;
+  max-width: 30%;
+  background-color:whitesmoke;
+}
+.container-fluid .map{
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
