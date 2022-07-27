@@ -153,24 +153,26 @@
 <!---------------------------------------NAVBAR ENDS ----------------------------------> 
 
 <!----------------------------------------- SUMMARY -----------------------------------> 
-
-<div class="container">
-  <div class="container-fluid"> 
-    <p> Below is the list of cities by total incidents that reported</p>
-    <div class="df">
-      {{df | safe}} 
+<div class="container mt-5 pt-5">
+  <div class="row">
+    <div class="col-auto mr-auto">
+      <div class="df">
+        {{df | safe}} 
+      </div>
+      
     </div>
-                      
-</div> 
+    <div class="col-auto mr-auto">
+      <div class="map">
+        {{m| safe}} 
+
+      </div>
+      
+    </div>
+  </div>
+
 </div>
 
-<div class="container-fluid"> 
-  
-  <div  class="map">
-    {{m| safe}} 
-  </div>
-                    
-</div> 
+
           
 
 
