@@ -1,10 +1,9 @@
 /* Set the size of the div element that contains the map */
 /***** style footer******************/
+main {
+    margin: 0;
+    padding: 50px;
+    
+  }
 
-
-.container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+ 
