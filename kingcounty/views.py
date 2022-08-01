@@ -22,14 +22,14 @@ def home(request):
     x = pd.DataFrame()
     results_df = pd.read_csv('./kingcounty/summary.csv')
     x = results_df[["lat", "lot", "count_normal" ]]
-    x["lat"]= x['lat'].astype(float)
-    x["lot"]= x['lot'].astype(float)
-    x["count_normal"]= x['count_normal'].astype(float)
+    x['lat'].astype(float)
+    x['lot'].astype(float)
+    x['count_normal'].astype(float)
     my_array =x.to_numpy()
     mylist = my_array.tolist()
     
     df = results_df[["city", "count_ID"]]
-    df["count_ID"]= df["count_ID"].astype(int)
+    df["count_ID"].astype(int)
     df = df.sort_values(["count_ID", "city"], ascending=False)
     df.rename(columns = {'count_ID':'total crime'}, inplace = True)
     
