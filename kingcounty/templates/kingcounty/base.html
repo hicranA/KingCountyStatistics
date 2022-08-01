@@ -1,75 +1,180 @@
-<!doctype html>
+<!DOCTYPE html>
+ <!-- Load static files----->
+ {% load static%}
+ 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> King County Crime Statistics </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <!----------------------- nav bar----------------------------->
-    <nav class="navbar sticky-top navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="http://127.0.0.1:8000/">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/">Home</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    <!----------------------- nav bar ends ---------------------------->
+<!---------------------------------------HEAD---------------------------------------------------------> 
+<head>
+
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+ <!-- Link to bootstrap navbar-----> 
+
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+ 
+  <!-- Link to bootstrap footer-----> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+    <!-- cutsome stylingsheet-----> 
+
+  <link rel="stylesheet" href="{% static 'kingcounty/style.css' %}" type='text/css'>
+
+   
 </head>
-  <body>
-    <div class = 'container'>
-        <div class = "row">
-          <div class="col-md-6">
-            <h4>King County Crime Statistics - 2022</h4>
-            <p>
-              Below is the King County total reported crime case by city.
-              For the visulazation of the data I created the heat map on the right.
-              
+<!---------------------------------------HEAD ENDS ----------------------------------------------------> 
 
-        </div>
-            <div class="col-md-6">
-                <h5>King County Crime Statistics - 2022</h5>
-                <p>
-                  In the below list we can see the top 10 King Couty city that highiest crime amount.
-                </p>
-                  {{df | safe}} 
-                
 
-            </div>
-            <div class="col-lg-6"> 
-              <h5>King County Crime 2022 Bubble Map</h5>  
-              <h4> </h4> 
-            
-            </div>
-            <div class="col-md-6"> 
-              <h5>King County Crime 2022 Bubble Map</h5>  
-               <p>To summarize my finding I created the bubble map below.<br>
-               The map is interactive.The bigger bubble represents big crime amount.Zoom in using plus button on the left side of the map ,and click on the city that you want to see pop info</p>       
-                {{m | safe}} 
-            </div>
-<!----------------------- nav footer -- ----------------------------->
-    <div class="navbar navbar-light bg-light">
-      <p>
-        Find Me here!
-      </p>
-      <br>
-      <div> 
-        <a class="btn btn-primary btn-lg btn-floating"style="background-color: #ac2bac;" href="https://www.linkedin.com/in/hicranarnold/"><i role="button"></i>LinkedIn</a>
-        <a  class="btn btn-primary" href="https://github.com/hicranA"><i class="fa fa-github" aria-hidden="true" style="font-size:24px;color:black"></i>Github</a> 
-        <a  class="btn btn-primary" href="https://www.linkedin.com/in/hicranarnold/"><i class="fa fa-envelope" aria-hidden="true"style="font-size:24px;color:black"></i>Email</a>
-         </div>
-      </div> 
-<!----------------------- nav footer -- ----------------------------->
-            
-        </div>
+<!---------------------------------------BODY ----------------------------------------------------------------------------------------> 
+<body>
+
+
+
+<!---------------------------------------NAVBAR -------------------------------------> 
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Hicran Arnold - Projects</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">King County Crime Statics</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled"></a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  </body>
+  </div>
+</nav>
+
+<!---------------------------------------NAVBAR ENDS ----------------------------------> 
+
+<!----------------------------------------- SUMMARY -----------------------------------> 
+
+<main>
+  
+<!----- summary -------------------> 
+<div class="container">
+  <div class="container-fluid">
+    <h1> King County Crime Statics</h1>
+  <p>
+    The goal of this project is to get to know more about the crime data in King County. 
+    Identify safest and dangerous areas. 
+    Provide a visualization of crime incidents analysis in King County.
+  </p>
+  </div>
+</div>
+<!----- summary -------------------> 
+<!----- container -------------------> 
+<div class="container"> 
+
+<!----- paragraph-------------------> 
+  <div class="container-fluid">
+    <p>
+    Here is the top ten cities that has the highiest incidents that reported. This numbers shows our current year and 
+    it might change if King County updated their data.
+   </p>
+  </div> 
+  <!----- paragraph-------------------> 
+
+   <!----- data frame-------------------> 
+   <div class="container-fluid">
+    <div class="df">
+      {{df | safe}} 
+    </div>
+  </div>
+    <!----- data frame------------------->                      
+</div>
+<!--------- container ends ---------------------------------------> 
+
+
+
+<!--------- other container--- ---------------------------------------> 
+
+<div class="container"> 
+
+  <!----- paragraph-------------------> 
+    <div class="container-fluid">
+      <p>
+      I want to find a way to display the incidents data by city and summurize it. I think bubble map does a good job on this.
+      So if the city has the big number of incidents it shows a bigger buble. In this map you can zoom in and click 
+      on the city that you 
+     </p>
+    </div> 
+  <!----- paragraph-------------------> 
+  <!----- map-------------------> 
+     <div class="container-fluid">
+      <div  class=container-xl>
+        {{m| safe}} 
+      </div>
+     </div>
+    <!----- map-------------------> 
+  </div>
+  <!--------- other container ends---------------------------------------> 
+  <div>
+
+  </div>
+
+</main>
+
+
+
+
+
+<!-- FOOTER------------------------------------------------------->   
+
+
+<footer class="text-center text-white" style="background-color: #f1f1f1;">
+  <!-- Grid container -->
+  <div class="container pt-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Linkedin -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="https://www.linkedin.com/in/hicranarnold/"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="https://github.com/hicranA"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Hicran Arnold 
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- FOOTER END ----------------------------------------------------> 
+<!---------------------------------------BODY ENDS -----------------------------------------------------> 
+</body>
 </html>
+
+
+
+   
